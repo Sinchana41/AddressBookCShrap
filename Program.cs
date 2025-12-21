@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+namespace AddressBookSystem
+{
+    class AddressBookMain
+    {
+        static void Main()
+        {
+            Console.WriteLine("Welcome to Address Book Program");
+        }
+    }
+}
