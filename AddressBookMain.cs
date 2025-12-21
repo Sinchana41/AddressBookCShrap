@@ -1,4 +1,5 @@
 ﻿using AddressBookSystem.Models;
+using AddressBookSystem.Services;
 using System;
 
 namespace AddressBookSystem
@@ -17,7 +18,15 @@ namespace AddressBookSystem
             contact.Email = "sin@gmail.com";
             contact.Phone = "2345678911";
 
-            Console.WriteLine(contact);
+            AddressBook addressBook = new AddressBook();    
+            addressBook.AddContact(contact);
+
+            List<Contact> c = addressBook.GetContacts();
+
+            foreach (var person in c)
+            {
+                Console.WriteLine(person);
+            }
 
         }
     }
