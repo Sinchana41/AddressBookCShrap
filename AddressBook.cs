@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AddressBookSystem.Models;
 
-namespace AddressBookSystem.Services
+
+namespace AddressBookSystem
 {
     public class AddressBook
     {
