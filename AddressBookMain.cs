@@ -1,33 +1,95 @@
-﻿using AddressBookSystem.Models;
-using AddressBookSystem.Services;
-using System;
+﻿using System;
 
-namespace AddressBookSystem
+namespace AddressBookSystems
 {
     class AddressBookMain
     {
         static void Main()
         {
-            Contact contact = new Contact();
-            contact.FirstName = "Sinchana";
-            contact.LastName = "A N";
-            contact.Address = "Anuvanahalli";
-            contact.City = "Ajjampura";
-            contact.State = "Karnataka";
-            contact.Zip = "577549";
-            contact.Email = "sin@gmail.com";
-            contact.Phone = "2345678911";
+            AddressBook addressBook = new AddressBook();
+            bool exit = false;
 
-            AddressBook addressBook = new AddressBook();    
+            while (!exit)
+            {
+                Console.WriteLine("\n===== ADDRESS BOOK MENU =====");
+                Console.WriteLine("1. Add Contact");
+                Console.WriteLine("2. Display All Contacts");
+                Console.WriteLine("3. Exit");
+                Console.Write("Enter your choice: ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        AddContact(addressBook);
+                        break;
+
+                    case "2":
+                        addressBook.DisplayAllContacts();
+                        break;
+
+                    case "3":
+                        exit = true;
+                        Console.WriteLine("Exiting Address Book...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Try again.");
+                        break;
+                }
+            }
+        }
+
+       
+        static void AddContact(AddressBook addressBook)
+        {
+            Contact contact = new Contact();
+
+            Console.Write("First Name: ");
+            contact.FirstName = Console.ReadLine();
+
+            Console.Write("Last Name: ");
+            contact.LastName = Console.ReadLine();
+
+            Console.Write("Address: ");
+            contact.Address = Console.ReadLine();
+
+            Console.Write("City: ");
+            contact.City = Console.ReadLine();
+
+            Console.Write("State: ");
+            contact.State = Console.ReadLine();
+
+            Console.Write("Zip: ");
+            contact.Zip = Console.ReadLine();
+
+            Console.Write("Phone: ");
+            contact.Phone = Console.ReadLine();
+
+            Console.Write("Email: ");
+            contact.Email = Console.ReadLine();
+
             addressBook.AddContact(contact);
 
-            List<Contact> c = addressBook.GetContacts();
+            Console.Write("Enter City or State to search: ");
+            string location = Console.ReadLine();
 
-            foreach (var person in c)
+            AddressBookSystem system = new AddressBookSystem();
+            var results = system.SearchByCityOrState(location);
+
+            if (results.Count == 0)
             {
-                Console.WriteLine(person);
+                Console.WriteLine("No persons found.");
             }
+            else
+            {
+                Console.WriteLine("\n--- SEARCH RESULTS ---");
+                foreach (var person in results)
+                {
+                    Console.WriteLine(person);
+                }
 
-        }
-    }
+            }
+    }   }
 }

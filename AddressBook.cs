@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using AddressBookSystem.Models;
-
-namespace AddressBookSystem.Services
+﻿
+namespace AddressBookSystems
 {
     public class AddressBook
     {
@@ -9,10 +7,30 @@ namespace AddressBookSystem.Services
 
         public void AddContact(Contact contact)
         {
-            if (!contacts.Contains(contact))
-                contacts.Add(contact);
+            if (contacts.Contains(contact))   
+            {
+                Console.WriteLine("Duplicate contact found. Entry not added.\n");
+                return;
+            }
+
+            contacts.Add(contact);
+            Console.WriteLine("Contact added successfully.\n");
         }
 
         public List<Contact> GetContacts() => contacts;
+        public void DisplayAllContacts()
+        {
+            if (!contacts.Any())
+            {
+                Console.WriteLine("No contacts found.");
+                return;
+            }
+
+            Console.WriteLine("\n--- CONTACT LIST ---");
+            foreach (var contact in contacts)
+            {
+                Console.WriteLine(contact);
+            }
+        }
     }
 }
