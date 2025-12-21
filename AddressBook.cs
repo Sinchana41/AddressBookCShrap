@@ -14,5 +14,11 @@ namespace AddressBookSystem.Services
         }
 
         public List<Contact> GetContacts() => contacts;
+
+        public void DeleteContact(string firstName)
+        {
+            contacts.RemoveAll(c => c.FirstName == firstName);
+        }
+
     }
 }

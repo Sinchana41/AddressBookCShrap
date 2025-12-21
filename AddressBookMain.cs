@@ -21,6 +21,8 @@ namespace AddressBookSystem
             AddressBook addressBook = new AddressBook();    
             addressBook.AddContact(contact);
 
+            addressBook.DeleteContact("Sinchana");
+
             List<Contact> c = addressBook.GetContacts();
 
             foreach (var person in c)
@@ -28,6 +30,7 @@ namespace AddressBookSystem
                 Console.WriteLine(person);
             }
 
+            
         }
     }
 }
