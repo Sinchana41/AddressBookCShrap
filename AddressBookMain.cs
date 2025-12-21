@@ -91,5 +91,22 @@ namespace AddressBookSystems
                 }
 
             }
-    }   }
+            Console.Write("Enter City or State to search: ");
+            string location1 = Console.ReadLine();
+
+            var results1 = system.SearchByCityOrState(location1);
+
+            if (results1.Count == 0)
+            {
+                Console.WriteLine("No persons found.");
+            }
+            else
+            {
+                Console.WriteLine("\n--- SEARCH RESULTS ---");
+                foreach (var person in results1)
+                {
+                    Console.WriteLine(person);
+                }
+            }
+        }   }
 }
