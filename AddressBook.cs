@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using AddressBookSystem.Models;
 
-namespace AddressBookSystem.Services
+namespace AddressBookSystem
 {
     public class AddressBook
     {
@@ -14,5 +13,19 @@ namespace AddressBookSystem.Services
         }
 
         public List<Contact> GetContacts() => contacts;
+
+        public void DisplayAllContacts()
+        {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine("No contacts found.");
+                return;
+            }
+
+            foreach (var contact in contacts)
+            {
+                Console.WriteLine(contact);
+            }
+        }
     }
 }
