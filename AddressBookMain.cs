@@ -20,7 +20,9 @@ namespace AddressBookSystems
                 Console.WriteLine("3. Search by City/State");
                 Console.WriteLine("4. View by City");
                 Console.WriteLine("5. View by State");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Count by City");
+                Console.WriteLine("7. Count by State");
+                Console.WriteLine("8. Exit");
                 Console.Write("Choice: ");
 
                 switch (Console.ReadLine())
@@ -50,11 +52,20 @@ namespace AddressBookSystems
                         Console.Write("Enter State: ");
                         system.ViewPersonsByState(Console.ReadLine());
                         break;
-
                     case "6":
-                        exit = true;
+                        Console.Write("Enter City: ");
+                        Console.WriteLine("Count = " +
+                            system.GetCountByCity(Console.ReadLine()));
                         break;
 
+                    case "7":
+                        Console.Write("Enter State: ");
+                        Console.WriteLine("Count = " +
+                            system.GetCountByState(Console.ReadLine()));
+                        break;
+                    case "8":
+                        exit = true;
+                        break;
                     default:
                         Console.WriteLine("Invalid option.");
                         break;

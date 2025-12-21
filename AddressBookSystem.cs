@@ -103,5 +103,61 @@ namespace AddressBookSystems
             foreach (var p in stateMap[state])
                 Console.WriteLine(p);
         }
+        // UC-10
+        public int GetCountByCity(string city)
+        {
+            city = city.ToLower();
+
+            if (!cityMap.ContainsKey(city))
+                return 0;
+
+            return cityMap[city].Count;
+        }
+
+        // UC-10
+        public int GetCountByState(string state)
+        {
+            state = state.ToLower();
+
+            if (!stateMap.ContainsKey(state))
+                return 0;
+
+            return stateMap[state].Count;
+        }
+
+        // UC-10 
+        public void DisplayCityWiseCount()
+        {
+            Console.WriteLine("\n--- CONTACT COUNT BY CITY ---");
+
+            if (cityMap.Count == 0)
+            {
+                Console.WriteLine("No city data available.");
+                return;
+            }
+
+            foreach (var entry in cityMap)
+            {
+                Console.WriteLine($"{entry.Key.ToUpper()} : {entry.Value.Count}");
+            }
+        }
+
+        // UC-10 
+        public void DisplayStateWiseCount()
+        {
+            Console.WriteLine("\n--- CONTACT COUNT BY STATE ---");
+
+            if (stateMap.Count == 0)
+            {
+                Console.WriteLine("No state data available.");
+                return;
+            }
+
+            foreach (var entry in stateMap)
+            {
+                Console.WriteLine($"{entry.Key.ToUpper()} : {entry.Value.Count}");
+            }
+        }
+
     }
 }
