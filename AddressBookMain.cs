@@ -1,33 +1,28 @@
-﻿using AddressBookSystem.Models;
-using AddressBookSystem.Services;
-using System;
+﻿using System;
 
-namespace AddressBookSystem
+namespace AddressBookSystems
 {
     class AddressBookMain
     {
         static void Main()
         {
-            Contact contact = new Contact();
-            contact.FirstName = "Sinchana";
-            contact.LastName = "A N";
-            contact.Address = "Anuvanahalli";
-            contact.City = "Ajjampura";
-            contact.State = "Karnataka";
-            contact.Zip = "577549";
-            contact.Email = "sin@gmail.com";
-            contact.Phone = "2345678911";
+            AddressBookSystem system = new AddressBookSystem();
 
-            AddressBook addressBook = new AddressBook();    
-            addressBook.AddContact(contact);
+            system.AddAddressBook("Personal");
+            system.AddAddressBook("Office");
 
-            List<Contact> c = addressBook.GetContacts();
+            AddressBook personalBook = system.GetAddressBook("Personal");
 
-            foreach (var person in c)
+            personalBook.AddContact(new Contact
             {
-                Console.WriteLine(person);
-            }
+                FirstName = "Seetha",
+                LastName = "Ram",
+                City = "Bangalore",
+                State = "KA"
+            });
 
+            Console.WriteLine("Address Books:");
+            system.DisplayAllAddressBooks();
         }
     }
 }
