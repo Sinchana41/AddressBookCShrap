@@ -1,4 +1,6 @@
-﻿namespace AddressBookSystems
+﻿using System;
+
+namespace AddressBookSystems
 {
     public class Contact
     {
@@ -11,16 +13,14 @@
         public string Phone { get; set; }
         public string Email { get; set; }
 
-        
+        // UC-7: Duplicate check based on Name
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Contact))
+            if (obj is not Contact other)
                 return false;
 
-            Contact other = (Contact)obj;
-
-            return this.FirstName.Equals(other.FirstName, StringComparison.OrdinalIgnoreCase)
-                && this.LastName.Equals(other.LastName, StringComparison.OrdinalIgnoreCase);
+            return FirstName.Equals(other.FirstName, StringComparison.OrdinalIgnoreCase)
+                && LastName.Equals(other.LastName, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()
@@ -33,7 +33,7 @@
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}, {City}, {State}, {Zip}, {Phone}, {Email}";
+            return $"{FirstName} {LastName}, {Address}, {City}, {State}, {Zip}, {Phone}, {Email}";
         }
     }
 }
