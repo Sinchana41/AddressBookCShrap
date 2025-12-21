@@ -14,5 +14,16 @@ namespace AddressBookSystem.Services
         }
 
         public List<Contact> GetContacts() => contacts;
+
+        public void EditContact(string firstName, string city, string email)
+        {
+            var person = contacts.Find(c => c.FirstName == firstName);
+            if (person != null)
+            {
+                person.City = city;
+                person.Email = email;
+            }
+        }
+
     }
 }

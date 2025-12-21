@@ -21,6 +21,8 @@ namespace AddressBookSystem
             AddressBook addressBook = new AddressBook();    
             addressBook.AddContact(contact);
 
+            addressBook.EditContact("Sinchana", "Chikkamanglore","sinchana123@gmail.com");
+
             List<Contact> c = addressBook.GetContacts();
 
             foreach (var person in c)
